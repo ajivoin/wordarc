@@ -1,3 +1,15 @@
 {
-  "packs": []
+  "packs": [
+    {
+      "id": "forest",
+      "title": "Forest",
+      "themeKey": "forest",
+      "musicKey": "forest",
+      "levelIds": ["forest-001", "forest-002"],
+      "levelAssets": {
+        "forest-001": "levels/forest/001.json",
+        "forest-002": "levels/forest/002.json"
+      }
+    }
+  ]
 }

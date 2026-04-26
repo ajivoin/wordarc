@@ -1,0 +1,14 @@
+{
+  "id": "forest-001",
+  "packId": "forest",
+  "index": 0,
+  "title": "Sunrise 1",
+  "letters": "AEPPL",
+  "rows": 5,
+  "cols": 5,
+  "placements": [
+    { "word": "APPLE", "row": 1, "col": 0, "dir": "across" },
+    { "word": "PEAL",  "row": 0, "col": 4, "dir": "down"   }
+  ],
+  "rewardCoins": 25
+}
