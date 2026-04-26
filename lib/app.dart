@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'routing/app_router.dart';
+import 'package:wordarc/routing/app_router.dart';
 
 class WordarcApp extends ConsumerWidget {
   const WordarcApp({super.key});

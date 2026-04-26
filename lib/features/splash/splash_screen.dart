@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../data/dictionary/dictionary_provider.dart';
+import 'package:wordarc/data/dictionary/dictionary_provider.dart';
 
 class SplashScreen extends ConsumerWidget {
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dictionaryAsync = ref.watch(dictionaryProvider);
-
-    dictionaryAsync.whenData((_) {
-      // Navigate to home once the dictionary is ready.
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (context.mounted) context.go('/home');
-      });
+    ref.listen(dictionaryProvider, (_, next) {
+      if (next.hasValue) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (context.mounted) context.go('/home');
+        });
+      }
     });
+
+    final dictionaryAsync = ref.watch(dictionaryProvider);
 
     return Scaffold(
       backgroundColor: const Color(0xFF1A3A2A),

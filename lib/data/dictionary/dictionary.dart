@@ -3,13 +3,28 @@ import 'dart:collection';
 /// In-memory dictionary built from the ENABLE word list.
 ///
 /// Provides O(1) word lookup and sub-anagram enumeration used by
-/// [LevelGenerator] and [WordValidator].
+/// LevelGenerator and WordValidator.
 class Dictionary {
   Dictionary._({
     required Set<String> words,
     required Map<String, List<String>> byKey,
   })  : _words = UnmodifiableSetView(words),
         _byKey = UnmodifiableMapView(byKey);
+
+  factory Dictionary.fromWords(Iterable<String> words) {
+    final wordSet = <String>{};
+    final byKey = <String, List<String>>{};
+
+    for (final w in words) {
+      final lower = w.trim().toLowerCase();
+      if (lower.isEmpty) continue;
+      wordSet.add(lower);
+      final key = (lower.split('')..sort()).join();
+      byKey.putIfAbsent(key, () => []).add(lower);
+    }
+
+    return Dictionary._(words: wordSet, byKey: byKey);
+  }
 
   final Set<String> _words;
 
@@ -32,20 +47,5 @@ class Dictionary {
       }
     }
     return results.toSet().toList();
-  }
-
-  factory Dictionary.fromWords(Iterable<String> words) {
-    final wordSet = <String>{};
-    final byKey = <String, List<String>>{};
-
-    for (final w in words) {
-      final lower = w.trim().toLowerCase();
-      if (lower.isEmpty) continue;
-      wordSet.add(lower);
-      final key = (lower.split('')..sort()).join();
-      byKey.putIfAbsent(key, () => []).add(lower);
-    }
-
-    return Dictionary._(words: wordSet, byKey: byKey);
   }
 }
