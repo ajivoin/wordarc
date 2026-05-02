@@ -31,5 +31,5 @@ class CurrentLevel extends _$CurrentLevel {
   String? build() => null;
 
   String? get level => state;
-  set level(String levelId) => state = levelId;
+  set level(String? levelId) => state = levelId;
 }
