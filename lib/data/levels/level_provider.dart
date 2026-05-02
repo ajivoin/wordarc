@@ -14,11 +14,12 @@ Future<List<Pack>> packs(PacksRef ref) =>
 
 @riverpod
 Future<Level> levelLoader(LevelLoaderRef ref, String levelId) async {
+  final repository = ref.watch(levelRepositoryProvider);
   final packList = await ref.watch(packsProvider.future);
   for (final pack in packList) {
     final assetPath = pack.levelAssets[levelId];
     if (assetPath != null) {
-      return ref.watch(levelRepositoryProvider).loadLevel(assetPath);
+      return repository.loadLevel(assetPath);
     }
   }
   throw StateError('No asset path found for levelId: $levelId');
@@ -29,5 +30,5 @@ class CurrentLevel extends _$CurrentLevel {
   @override
   String? build() => null;
 
-  void setLevel(String levelId) => state = levelId;
+  set level(String levelId) => state = levelId;
 }

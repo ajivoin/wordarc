@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wordarc/domain/models/grid_cell.dart';
 import 'package:wordarc/features/game/widgets/grid_tile.dart';

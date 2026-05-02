@@ -7,8 +7,6 @@ part 'level.g.dart';
 
 @freezed
 class Level with _$Level {
-  const Level._();
-
   const factory Level({
     required String id,
     required String packId,
@@ -20,6 +18,8 @@ class Level with _$Level {
     required List<WordPlacement> placements,
     required int rewardCoins,
   }) = _Level;
+
+  const Level._();
 
   factory Level.fromJson(Map<String, dynamic> json) => _$LevelFromJson(json);
 

@@ -15,7 +15,7 @@ class LevelRepository {
   }
 
   Future<Level> loadLevel(String assetPath) async {
-    final json = await rootBundle.loadString(assetPath);
+    final json = await rootBundle.loadString('assets/$assetPath');
     return Level.fromJson(jsonDecode(json) as Map<String, dynamic>);
   }
 }

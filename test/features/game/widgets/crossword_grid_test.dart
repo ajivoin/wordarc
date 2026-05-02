@@ -9,6 +9,18 @@ Map<String, GridCell> _buildCells(List<(int, int, String)> entries) {
   };
 }
 
+Widget _buildSubject(Map<String, GridCell> cells) {
+  return MaterialApp(
+    home: Scaffold(
+      body: SizedBox(
+        width: 300,
+        height: 300,
+        child: CrosswordGrid(cells: cells, rows: 4, cols: 4),
+      ),
+    ),
+  );
+}
+
 void main() {
   // TAP across + PAT down, intersection at (1,1)='A', total 5 cells.
   final testCells = _buildCells([
@@ -18,18 +30,6 @@ void main() {
     (0, 1, 'P'),
     (2, 1, 'T'),
   ]);
-
-  Widget _buildSubject(Map<String, GridCell> cells) {
-    return MaterialApp(
-      home: Scaffold(
-        body: SizedBox(
-          width: 300,
-          height: 300,
-          child: CrosswordGrid(cells: cells, rows: 4, cols: 4),
-        ),
-      ),
-    );
-  }
 
   group('CrosswordGrid', () {
     testWidgets('renders all cell letters', (tester) async {
