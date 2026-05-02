@@ -30,5 +30,6 @@ class CurrentLevel extends _$CurrentLevel {
   @override
   String? build() => null;
 
+  String? get level => state;
   set level(String levelId) => state = levelId;
 }
