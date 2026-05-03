@@ -1,0 +1,14 @@
+{
+  "id": "forest-002",
+  "packId": "forest",
+  "index": 1,
+  "title": "Sunrise 2",
+  "letters": "AELP",
+  "rows": 5,
+  "cols": 5,
+  "placements": [
+    { "word": "LEAP", "row": 2, "col": 0, "dir": "across" },
+    { "word": "PALE", "row": 1, "col": 2, "dir": "down"   }
+  ],
+  "rewardCoins": 20
+}
